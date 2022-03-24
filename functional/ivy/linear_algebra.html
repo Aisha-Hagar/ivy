@@ -81,13 +81,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Overview</span></p>
+              <p class="caption"><span class="caption-text">Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../design.html">Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../why_ivy.html">Why Ivy?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../using_ivy.html">Using Ivy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_a_network.html">Training a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to Ivy</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Functional</span></p>
 <ul class="current">
@@ -106,7 +105,6 @@
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/matrix_transpose.html">matrix_transpose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/vector_norm.html">vector_norm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/svd.html">svd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra/outer.html">outer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/diagonal.html">diagonal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/inv.html">inv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/pinv.html">pinv</a></li>
@@ -118,8 +116,6 @@
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/svdvals.html">svdvals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/trace.html">trace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/det.html">det</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra/cholesky.html">cholesky</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra/eigvalsh.html">eigvalsh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_algebra/vector_to_skew_symmetric_matrix.html">vector_to_skew_symmetric_matrix</a></li>
 </ul>
 </li>
@@ -227,25 +223,14 @@
 <span id="linear-algebra"></span><h1>Linear algebra<a class="headerlink" href="#module-ivy.functional.ivy.linear_algebra" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="ivy.functional.ivy.linear_algebra.cholesky">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">cholesky</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">upper</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; ivy.array.Array<a class="reference internal" href="../../_modules/ivy/functional/ivy/linear_algebra.html#cholesky"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.linear_algebra.cholesky" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">cholesky</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/linear_algebra.html#cholesky"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.linear_algebra.cholesky" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the cholesky decomposition of the x matrix.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>array</em>) – input array having shape (…, M, M) and whose innermost two dimensions form square symmetric
-positive-definite matrices. Should have a floating-point data type.</p></li>
-<li><p><strong>upper</strong> (<em>bool</em>) – If True, the result must be the upper-triangular Cholesky factor U. If False, the result
-must be the lower-triangular Cholesky factor L. Default: False.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>x</strong> (<em>array</em>) – Matrix to be decomposed.</p>
 </dd>
-<dt class="field-even">Return out</dt>
-<dd class="field-even"><p>an array containing the Cholesky factors for each square matrix.
-If upper is False, the returned array must contain lower-triangular matrices; otherwise,</p>
-<blockquote>
-<div><p>the returned array must contain upper-triangular matrices. 
-The returned array must have a floating-point data type determined by Type Promotion Rules 
-and must have the same shape as x.</p>
-</div></blockquote>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>cholesky decomposition of the matrix x.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -292,22 +277,6 @@ Defaults to second axis (1).</p>
 </dl>
 <dl class="simple">
 <dt>out:</dt><dd><p>an array containing the diagonals and whose shape is determined by removing the last two dimensions and appending a dimension equal to the size of the resulting diagonals. The returned array must have the same data type as <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="ivy.functional.ivy.linear_algebra.eigvalsh">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">eigvalsh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span> &#x2192; ivy.array.Array<a class="reference internal" href="../../_modules/ivy/functional/ivy/linear_algebra.html#eigvalsh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.linear_algebra.eigvalsh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the eigenvalues of a symmetric matrix (or a stack of symmetric matrices) x.
-:param x: input array having shape (…, M, M) and whose innermost two dimensions form square matrices.</p>
-<blockquote>
-<div><p>Must have floating-point data type.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>an array containing the computed eigenvalues. The returned array must have shape (…, M) and
-have the same data type as x.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -392,22 +361,6 @@ x: array</p>
 <dt>out: array</dt><dd><p>an array containing the transpose for each matrix and having shape <code class="docutils literal notranslate"><span class="pre">(...,</span> <span class="pre">N,</span> <span class="pre">M)</span></code>. The returned array must have the same data type as <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="ivy.functional.ivy.linear_algebra.outer">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">outer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x1</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">x2</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; ivy.array.Array<a class="reference internal" href="../../_modules/ivy/functional/ivy/linear_algebra.html#outer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.linear_algebra.outer" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the outer product of two vectors x1 and x2.</p>
-<p>x1 (array) – first one-dimensional input array of size N. Should have a numeric data type.
-a(M,) array_like
-First input vector. Input is flattened if not already 1-dimensional.</p>
-<p>x2 (array) – second one-dimensional input array of size M. Should have a numeric data type.
-b(N,) array_like
-Second input vector. Input is flattened if not already 1-dimensional.</p>
-<p>out (array) – a two-dimensional array containing the outer product and whose shape is (N, M).
-The returned array must have a data type determined by Type Promotion Rules.
-out(M, N) ndarray, optional
-A location where the result is stored</p>
 </dd></dl>
 
 <dl class="py function">
