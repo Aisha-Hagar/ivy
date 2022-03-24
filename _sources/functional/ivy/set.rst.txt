@@ -13,5 +13,4 @@ Set
    :maxdepth: -1
    :caption: Set
 
-   set/unique_values.rst
 
